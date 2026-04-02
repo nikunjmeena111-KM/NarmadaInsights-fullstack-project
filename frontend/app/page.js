@@ -1,65 +1,209 @@
-import Image from "next/image";
+"use client";
+
+import Navbar from "@/components/layout/Navbar";
+import usePageScale from "@/hooks/usePageScale";
 
 export default function Home() {
+  usePageScale();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="viewport">
+
+      <Navbar />
+
+      <div className="page" id="page">
+        //{/* 🔥 Hero Images */}
+<img className="img img--9" src="/assets/image-9.png" alt="" />
+<img className="img img--5" src="/assets/image-5.png" alt="" />
+<img className="img img--8" src="/assets/image-8.png" alt="" />
+
+<div className="label label--calculator">Calculator</div>
+
+{/* 🔥 Hero Text */}
+<div className="hero__kicker">
+  Simple Financial Insights, All in One Place
+</div>
+
+<div className="hero__sub">
+  Access macro data, market trends, and powerful calculators — all in one place
+</div>
+
+<button className="cta">SignUp for free</button>
+
+<div className="quote">
+  
+  <div className="quote__text">
+    “It ain't about how hard you hit. 
+    <br/>
+    It's about how hard you can get hit and keep moving forward”
+  </div>
+
+  <div className="quote__author">
+    - Rocky Balboa
+  </div>
+
+</div>
+
+
+{/* 🔥 Section Title */}
+<div className="section-title">
+  Simple Tools for Financial Insights
+</div>
+
+<div className="section-sub">
+  Explore basic financial data, try calculators, and stay updated.
+</div>
+
+<section className="cards">
+
+  {/* 🔹 Card 1 */}
+  <div className="card card--calc">
+    <div className="card__title">Calculators</div>
+    <div className="card__body">
+      Try simple financial calculators to get quick estimates for common scenarios like investments, loans, and returns.
+    </div>
+  </div>
+
+  {/* 🔹 Card 2 */}
+  <div className="card card--econ">
+    <div className="card__title">Economic Data</div>
+    <div className="card__body">
+      View selected macroeconomic data by country and year to understand basic economic trends.
+    </div>
+  </div>
+
+  {/* 🔹 Card 3 */}
+  <div className="card card--market">
+    <div className="card__title">Market Overview</div>
+    <div className="card__body">
+      Check key stock indices, exchange rates, and recent financial news in one place.
+    </div>
+  </div>
+
+</section>
+
+<div className="why__title">
+  Why Economic Data Matters
+</div>
+
+{/* 🔹 Inflation */}
+<div className="why why--inflation">
+  <div className="why__heading">Inflation</div>
+  <br />
+  <div className="why__text">
+    Inflation shows how prices change over time. As it rises, the same money buys less than before.
+    <br />
+    Tracking it helps you understand real value and spending power.
+  </div>
+</div>
+
+{/* 🔹 Interest Rates */}
+<div className="why why--rates">
+  <div className="why__heading">Interest Rates</div>
+  <br />
+  <div className="why__text">
+    Interest rates affect borrowing and saving decisions.
+    <br />
+    Higher rates make loans expensive but increase returns on savings.
+    <br />
+    They also influence how markets and investments behave.
+  </div>
+</div>
+
+{/* 🔹 Global Trends */}
+<div className="why why--global">
+  <div className="why__heading">Global Trends</div>
+  <br />
+  <div className="why__text">
+    Economic events in one country can impact others.
+    <br />
+    Changes in growth, trade, or policy affect markets worldwide.
+    <br />
+    Understanding trends helps you see the bigger financial picture.
+  </div>
+</div>
+
+{/* 🔥 Guide Link */}
+<div className="guide-link">
+  For more detailed insights,{" "}
+  <a href="/guide" className="guide-link__highlight">
+    read our full guide
+  </a>{" "}
+  on economics.
+</div>
+
+{/* 🔥 Footer */}
+<footer className="footer">
+
+  {/* Logo */}
+  <img
+    className="footer__logo"
+    src="/assets/image-4.png"
+    alt="NarmadaInsights"
+  />
+
+  {/* Navigation */}
+  <div className="footer__nav">
+    About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Calculators&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Macro Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Dashboard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Support
+  </div>
+
+  {/* Divider */}
+  <div className="footer__divider"></div>
+
+  {/* Copyright */}
+  <div className="footer__copy">
+    © 2026 NarmadaInsights. All rights reserved.
+  </div>
+
+  {/* Social Icons */}
+  <div className="social">
+
+    <a className="social__btn" href="#">
+      <img
+        src="/assets/icon-facebook.png"
+        alt="facebook"
+        width="24"
+        height="24"
+      />
+    </a>
+
+    <a className="social__btn" href="#">
+      <img
+        src="/assets/icon-linkedin.png"
+        alt="linkedin"
+        width="24"
+        height="24"
+      />
+    </a>
+
+    <a className="social__btn" href="#">
+      <img
+        src="/assets/icon-youtube.png"
+        alt="youtube"
+        width="24"
+        height="24"
+      />
+    </a>
+
+    <a className="social__btn" href="#">
+      <img
+        src="/assets/icon-instagram.png"
+        alt="instagram"
+        width="24"
+        height="24"
+      />
+    </a>
+
+  </div>
+
+</footer>
+
+      </div>
+
     </div>
   );
 }
