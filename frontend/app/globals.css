@@ -69,7 +69,7 @@ text-decoration: none;
 .nav__link:hover{ text-decoration: underline; }
 .nav__menu{
 position: absolute;
-left: 1320.5px;
+left: 1275.5px;
 top: 30.5px;
 width: 24px;
 height: 24px;
@@ -337,3 +337,9 @@ place-items: center;
   height: 30px;
   object-fit: contain;
 }
+
+
+.page {
+  will-change: transform;
+}
+

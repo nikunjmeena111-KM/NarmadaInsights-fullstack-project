@@ -2,9 +2,11 @@
 
 import Navbar from "@/components/layout/Navbar";
 import usePageScale from "@/hooks/usePageScale";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   usePageScale();
+  const router = useRouter();
 
   return (
     <div className="viewport">
@@ -28,7 +30,9 @@ export default function Home() {
   Access macro data, market trends, and powerful calculators — all in one place
 </div>
 
-<button className="cta">SignUp for free</button>
+<button className="cta" onClick={() => router.push("/register")}>
+  SignUp for free
+</button>
 
 <div className="quote">
   
