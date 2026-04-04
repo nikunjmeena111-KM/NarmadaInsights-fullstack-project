@@ -8,7 +8,8 @@ import logger from "../utils/logger.js";
 
 
 // controller to register user
-const registerUser = asyncHandler(async (req , res)=>{
+const registerUser = asyncHandler(async (req , res, )=>{
+ 
 
 const { fullName , email , password } = req.body;
 
@@ -19,7 +20,7 @@ if([ fullName,email,password].some((field)=>field?.trim()==="")){
 const existedUser = await User.findOne({ email });
 
 if(existedUser){
-    throw new ApiError(409 , "user already exist");
+    throw new ApiError(409, "user already exist");
 }
 
 const profilePictureLocalPath= req.files?.profilePicture?.[0]?.path;
@@ -84,7 +85,7 @@ const loggedUser = await User.findById(user._id).select("-password -refreshToken
 
 const options ={
     httpOnly: true,
-    secure: true
+    secure: false,
 };
 
 logger.info({ layer: "controller", service: "auth", action: "loginUser", message: "User logged in", email });
@@ -105,6 +106,15 @@ res
 });
 
 
+// get current user
+const getCurrentUser = asyncHandler(async (req, res) => {
+// verifyJWT already adds req.user
+return res.status(200).json({
+success: true,
+data: req.user,
+message: "User fetched successfully",
+});
+});
 
 
 // controller to logout user
@@ -112,7 +122,8 @@ const logoutUser = asyncHandler(async (req,res)=>{
 
 const options ={
     httpOnly: true,
-    secure:true
+    secure:true,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
 logger.info({ layer: "controller", service: "auth", action: "logoutUser", message: "User logged out", userId: req.user?._id });
@@ -178,10 +189,15 @@ const updateProfilePicture = asyncHandler(async (req, res) => {
 });
 
 
+
+  
+
+
 export {
     registerUser,
     loginUser,
+    getCurrentUser,
     logoutUser,
     changePassword,
-    updateProfilePicture 
-};
+    updateProfilePicture,
+}

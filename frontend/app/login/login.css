@@ -1,0 +1,268 @@
+:root{
+  --page-w: 1440;
+  --page-h: 901;
+
+  --card-scale: 0.87;
+  --card-w: 477.99px;
+  --card-h: 495.99px;
+
+  --text: #454545;
+  --muted: #828282;
+  --stroke: #E5E7EB;
+  --surface: #F7F7F7;
+  --primary: #1BACFA;
+  --danger: #970A0A;
+}
+
+/* RESET */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #fff;
+  color: var(--text);
+}
+
+/* VIEWPORT */
+.viewport{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* PAGE (VERY IMPORTANT) */
+.page{
+  width: calc(var(--page-w) * 1px);
+  height: calc(var(--page-h) * 1px);
+  position: relative;
+  transform-origin: top left;
+  background: #fff;
+}
+
+/* NAVBAR */
+.nav{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 85px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(130, 130, 130, 1);
+  z-index: 1000;
+}
+
+.nav__inner {
+  width: 1440px;
+  height: 85px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 180px;
+}
+
+.nav__logo{
+  position: absolute;
+  left: 173.71px;
+  top: 9.75px;
+  width: 123.4px;
+  height: 65.49px;
+  object-fit: cover;
+}
+
+.nav__signin{
+  position: absolute;
+  left: 1064.21px;
+  top: 21.5px;
+  width: 60px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav__menu{
+  position: absolute;
+  left: 1196px;
+  top: 24.5px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* LEFT IMAGE */
+.image-4{
+  position: absolute;
+  left: 173.71px;
+  top: 289.39px;
+  width: 456.22px;
+  height: 304.15px;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.left-caption{
+  position: absolute;
+  left: 173.71px;
+  top: 532px;
+  width: 435px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* CARD */
+.card{
+  position: absolute;
+  left: calc(841.41px + var(--card-w) * (1 - var(--card-scale)));
+  top: 190.69px;
+
+  width: calc(var(--card-w) * var(--card-scale));
+  height: calc(var(--card-h) * var(--card-scale));
+
+  background: rgba(247,247,247,0.3);
+  border: 5px solid var(--stroke);
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(130, 130, 130, 0.45);
+
+  overflow: visible;
+}
+
+.card__inner{
+  width: var(--card-w);
+  height: var(--card-h);
+  transform: scale(var(--card-scale));
+  transform-origin: top left;
+  position: relative;
+}
+
+/* FIELD */
+.field {
+  position: absolute;
+  width: 292.31px;
+  height: 45.52px;
+  left: 75px;
+}
+
+.field__bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  object-fit: fill;
+  
+}
+
+.field__label{
+  position: absolute;
+  left: 11px;
+  top: 10px;
+  font-size: 16px;
+  z-index: 3;
+}
+
+.field__required{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: var(--danger);
+  z-index: 3;
+}
+
+/* INPUT OVERLAY (VERY IMPORTANT FIX) */
+.input-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 12px;
+  z-index: 2;
+}
+
+/* FIELD POSITIONS */
+.field--name{ top: 56.4px; }
+.field--email{ top: 144px; }
+.field--password{ top: 228px; }
+.field--profile {
+  top: 314.31px;
+  left: 75px;
+  cursor: pointer;
+}
+
+/* BUTTON */
+.submit{
+  position: absolute;
+  left: 138px;
+  top: 397px;
+  width: 161px;
+  height: 54px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* BOTTOM */
+.bottom-link{
+  position: absolute;
+  left: calc(841.41px + var(--card-w) * (1 - var(--card-scale)));
+  top: calc(190.69px + var(--card-h) * var(--card-scale) + 16px);
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+}
+
+.required-note{
+  position: absolute;
+  left: 608px;
+  bottom: 16px;
+  font-size: 16px;
+}
+
+.input-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 16px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.field__bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.file-input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.required-note__star {
+  color: #970A0A; /* 🔥 red */
+  font-weight: 600;
+}
+
+.page {
+  transition: transform 1s ease;
+}

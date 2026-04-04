@@ -2,15 +2,20 @@ import { Router } from "express";
 import { 
   loginUser,
   logoutUser, 
+  getCurrentUser,
   registerUser,  
   changePassword,
   updateProfilePicture,
+  
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.js";
 import { verifyJWT } from "../middlewares/authVarification.middleware.js";
 import { authLimiter } from "../middlewares/rateLimiter.middleware.js";
 
+
 const router = Router();
+
+console.log("🔥 USER ROUTES LOADED");
 
 router.route("/register").post(
   authLimiter,
@@ -18,14 +23,18 @@ router.route("/register").post(
     {
       name: "profilePicture",
       maxCount: 1
-    }
+}   
   ]),
-  registerUser
+ 
+    registerUser
+  
 );
 
 router.route("/login").post(authLimiter,loginUser);
 
+
 // secured routes
+router.route("/me").get(verifyJWT, getCurrentUser);
 router.route("/logout").post(verifyJWT, logoutUser);
 
 router.route("/change-password").post(
