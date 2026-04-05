@@ -9,7 +9,7 @@ const dashboardHandler = asyncHandler(async (req, res) => {
 
   const { country } = req.query;
 
-  const data = country
+  const data = country 
     ? await getCountryDashboard(country)
     : await getInitialDashboard();
 

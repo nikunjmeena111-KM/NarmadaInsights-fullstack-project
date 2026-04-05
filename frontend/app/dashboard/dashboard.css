@@ -1,0 +1,656 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: white;
+    overflow-x: hidden;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    position: relative;
+    width: 100%;
+    height: 1788px; /* fixed like your design */
+    background: white;
+}
+
+/* Header/Navbar */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0px 4px 8px 0px #828282;
+    background: white;
+    z-index: 50;
+}
+
+.logo-btn {
+    position: absolute;
+    left: 47.27px;
+    top: 8.75px;
+    width: 123.405px;
+    height: 65.494px;
+    transition: opacity 0.3s;
+}
+
+.logo-btn:hover {
+    opacity: 0.8;
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav-links {
+    position: absolute;
+    left: 771.26px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 20px;
+    font-weight: 500;
+    color: #454545;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #1bacfa;
+}
+
+.user-avatar {
+    position: absolute;
+    right: 77px;
+    top: 13.38px;
+    width: 56.233px;
+    height: 56.233px;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ================= COUNTRY SELECTOR ================= */
+
+.country-selector {
+  position: absolute;
+  top: 120px;
+  right: -1200px;
+
+  width: 300px;
+  height: 60px;
+
+  background: #d9d9d9;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+
+  position: relative;
+}
+
+/* Dropdown */
+.country-dropdown {
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-size: 18px;
+  font-weight: 500;
+  color: #454545;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  cursor: pointer;
+}
+
+/* Custom Arrow */
+.dropdown-arrow {
+  position: absolute;
+  right: 20px;
+  font-size: 14px;
+  color: #454545;
+  pointer-events: none;
+}
+
+
+/* Hero Cards */
+.card {
+    position: absolute;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+    overflow: hidden; 
+}
+
+.card-overlay {
+     position: absolute;
+    inset: 0;
+
+    background: rgba(255, 255, 255, 0.15); /* 🔥 lighter overlay */
+    
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+
+    z-index: 1;
+}
+
+.card:hover .card-overlay {
+    opacity: 0.4;
+}
+
+.card-bg-img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+     transform: scale(1.05);
+
+    z-index: 0;   /* 🔥 ADD */
+}
+
+/* Calculator Card */
+.calculator-card {
+    left: 141.71px;
+    top: 220.35px;
+    width: 444.675px;
+    height: 444.675px;
+}
+
+.card-bg-1 {
+    opacity: 0.5;
+}
+
+/* Calculator Content */
+.calculator-content {
+    position: relative;
+    z-index: 10;
+}
+
+.view-all-btn {
+    position: absolute;
+    left: calc(8.33% + 121.04px);
+    top: 247.89px;
+    width: 255.666px;
+    height: 39.155px;
+    background: #1bacfa;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.view-all-btn:hover {
+    background: #0d9de0;
+}
+
+.view-all-btn span {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.exchange-rates-label {
+    position: absolute;
+    left: calc(16.67% + 60.69px);
+    top: 314.75px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    transform: translateY(-50%);
+}
+
+/* Currency Selectors */
+.currency-btn {
+    position: absolute;
+    height: 25.587px;
+    width: 65.919px;
+    background: #d9d9d9;
+    border: 1px solid #454545;
+    border-radius: 10px;
+    top: 367.83px;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.currency-btn:hover {
+    background: #c9c9c9;
+}
+
+.currency-btn span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+}
+
+.from-btn {
+    left: calc(8.33% + 98.15px);
+}
+
+.to-btn {
+    left: calc(25% + 80.42px);
+}
+
+/* Exchange Rate Display */
+.exchange-rate-display {
+    position: absolute;
+    left: calc(16.67% + 57.03px);
+    top: 298.4px;
+    width: 134.03px;
+    height: 32.695px;
+    background: #d9d9d9;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* Currency Flags */
+.flag-container {
+    position: absolute;
+}
+
+.usa-flag {
+    position: absolute;
+    left: calc(8.33% + 78.01px);
+    top: 413.7px;
+    width: 110.412px;
+    height: 57.966px;
+    opacity: 0.75;
+}
+
+.india-flag {
+    position: absolute;
+    left: calc(25% + 71.06px);
+    top: 413.7px;
+    width: 87.091px;
+    height: 57.97px;
+    opacity: 0.75;
+}
+
+.currency-name {
+    position: absolute;
+    top: 493.98px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    transform: translateY(-50%);
+}
+
+.flag-container:first-of-type .currency-name {
+    left: calc(8.33% + 114.11px);
+}
+
+.india-name {
+    left: calc(25% + 94.88px);
+}
+
+/* Swap Icon */
+.swap-icon {
+    position: absolute;
+    left: calc(16.67% + 109.77px);
+    top: 423.57px;
+    width: 38.22px;
+    height: 38.22px;
+}
+
+.swap-icon img {
+    width: 100%;
+    height: 100%;
+    transform: scaleY(-1);
+    border: 1px solid #454545;
+}
+
+/* Amount Button */
+.amount-btn {
+    position: absolute;
+    left: calc(8.33% + 132.24px);
+    top: 550.71px;
+    width: 219.905px;
+    height: 32.156px;
+    background: #d9d9d9;
+    border: 1px solid #454545;
+    border-radius: 10px;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.amount-btn:hover {
+    background: #c9c9c9;
+}
+
+.amount-btn span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+}
+
+/* Stock Data Card */
+.stock-card {
+    left: calc(50% + 22.26px);
+    top: 243.68px;
+    width: 246.688px;
+    height: 236.409px;
+    z-index: 1;
+}
+
+.stock-bg {
+    opacity: 0.5;
+}
+
+/* 🔥 CENTERED TEXT */
+.card-title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 600;
+    color: #454545;
+    z-index: 1;
+    text-align: center;
+    width: 80%;
+}
+
+.card-description {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: 500;
+    color: #454545;
+    z-index: 1;
+    text-align: center;
+    width: 80%;
+    line-height: 1.5;
+}
+
+/* Macro Data Card */
+.macro-card {
+    left: calc(58.33% + 21.32px);
+    top: 413.7px;
+    width: 236.495px;
+    height: 236.495px;
+    z-index: 2;
+}
+
+.macro-bg {
+    opacity: 0.3;
+}
+
+/* Country Dashboard Card */
+.country-card {
+    left: calc(75% - 40.69px);
+    top: 274.47px;
+    width: 255.022px;
+    height: 231.851px;
+    z-index: 3;
+}
+
+.country-bg {
+    opacity: 1;
+}
+
+.card-overlay-4 {
+    opacity: 0.3;
+}
+
+/* News Section */
+.news-divider {
+    position: absolute;
+    left: 49.5%;
+    top: 930px;
+
+    transform: translateX(-50%);
+
+    width: 1280px;
+    height: 1px;
+
+    background: #656262;
+}
+
+.news-title {
+    position: absolute;
+    left: 117.34px;
+    top: 900px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #454545;
+}
+
+.news-section {
+    position: relative;
+}
+
+/* 🔥 CARD BASE */
+.news-card {
+    position: absolute;   /* keep your layout */
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.news-card:hover {
+    opacity: 1;
+}
+
+/* IMAGE */
+.news-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    border-radius: 10px;
+    opacity: 0.95;
+
+    /* 💡 lighter shadow */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+
+    transition: transform 0.3s;
+}
+
+.news-card:hover img {
+    transform: scale(1.05);
+}
+
+/* 🔥 OVERLAY FOR TEXT */
+.news-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 10px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7),
+        transparent
+    );
+}
+
+/* 🔥 TEXT INSIDE IMAGE */
+.news-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    line-height: 1.4;
+}
+
+/* News Card 1 */
+.news-card-1 {
+    left: 112.34px;
+    top: 913.49px;
+    width: 237.425px;
+    height: 158.283px;
+}
+
+/* News Card 2 */
+.news-card-2 {
+    left: calc(25% + 56.5px);
+    top: 916.88px;
+    width: 237px;
+    height: 123.24px;
+}
+
+/* News Card 3 */
+.news-card-3 {
+    left: calc(50% + 1.65px);
+    top: 916.88px;
+    width: 237.43px;
+    height: 158.287px;
+}
+
+/* News Card 4 */
+.news-card-4 {
+    left: calc(66.67% + 63.5px);
+    top: 916.88px;
+    width: 237px;
+    height: 133.397px;
+}
+/* ================= FOOTER ================= */
+
+.footer {
+    position: absolute;
+    top: 1500px;   /* adjust slightly if needed */
+    left: 0;
+    width: 100%;
+    height: 250px;
+
+    padding: 20px 80px;
+}
+
+/* Divider */
+.footer-divider {
+    width: 1280px;
+    height: 1px;
+    background: #e6e6e6;
+
+    margin: 0 auto 25px auto;
+}
+
+/* Logo */
+.footer-logo {
+    position: absolute;
+    left: 80px;
+    top: 40px;
+    width: 160px;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Links */
+.footer-links {
+    position: absolute;
+    left: 70%;
+    top: 60px;
+
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+.footer-link {
+    font-size: 18px;
+    font-weight: 600;
+    color: #454545;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.footer-link:hover {
+    color: #1bacfa;
+}
+
+/* Copyright */
+.copyright {
+    position: absolute;
+    left: 113px;
+    bottom: 90px;
+
+    font-size: 16px;
+    color: #454545;
+}
+
+/* Social Icons */
+.social-icons {
+    position: absolute;
+    left: 102.34px;
+    top: 1710px;
+    display: flex;
+    gap: 8px;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.social-btn:hover {
+    background: #f3f4f6;
+}
+
+.social-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1440px) {
+    .nav-links {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .user-avatar {
+        right: 20px;
+    }
+}
+
+
