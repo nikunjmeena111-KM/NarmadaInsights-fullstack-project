@@ -4,9 +4,11 @@ import useDashboard from "../../hooks/useDashboard";
 import DashboardNavbar from "../layout/DashboardNavbar";
 import Footer from "../layout/Footer";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const DashboardMain = () => {
   const { data, loading, error, selectedCountry,setSelectedCountry } = useDashboard();
+  const [amount, setAmount] = useState("");
   const router = useRouter();
 
   if (loading) return <div>Loading...</div>;
@@ -38,36 +40,52 @@ const DashboardMain = () => {
 </div>
 
       {/* ================= CALCULATOR ================= */}
-      <div className="card calculator-card">
-        <img src="/assets/calculator-bg.png" className="card-bg-img card-bg-1" />
-        <div className="card-overlay"></div>
-      </div>
+    <div className="calculator-card card">
 
-      <div className="calculator-content">
+  <img src="/assets/calculator-bg.png" className="card-bg-img" />
+  <div className="card-overlay"></div>
 
-        <button
-          className="view-all-btn"
-          onClick={() => router.push("/calculators")}
-        >
-          <span>View All</span>
-        </button>
+  {/* 🔥 TITLE */}
+  <div className="calculator-title">
+    Exchange Rate Calculator
+  </div>
 
-        <p className="exchange-rates-label">Exchange Rates</p>
+  {/* 🔥 EXCHANGE RATE (MOVED ABOVE INPUT) */}
+  <div className="exchange-rate-display">
+    USD → INR : {data?.exchange?.rate || "93.1258"}
+  </div>
 
-        <div className="exchange-rate-display">
-          {data?.exchange?.from} → {data?.exchange?.to} : {data?.exchange?.rate}
-        </div>
+  {/* BUTTON */}
+  <button className="view-all-btn">View All</button>
 
-        {/* Flags */}
-        <img src="/assets/usa.png" className="flag-img usa-flag" />
-        <img src="/assets/india.png" className="flag-img india-flag" />
+  {/* FROM / TO */}
+  <div className="currency-btn from-btn">USD</div>
+  <div className="currency-btn to-btn">INR</div>
 
-        {/* Swap */}
-        <div className="swap-icon">
-          <img src="/assets/swap.png" />
-        </div>
+  {/* FLAGS */}
+  <img src="/assets/usa.png" className="flag usa-flag" />
+  <img src="/assets/india.png" className="flag india-flag" />
 
-      </div>
+  {/* SWAP */}
+  <div className="swap-icon">⇄</div>
+
+  {/* INPUT */}
+  <input
+    type="number"
+    className="amount-input"
+    placeholder="Enter amount"
+    value={amount}
+    onChange={(e) => setAmount(e.target.value)}
+  />
+
+  {/* OUTPUT */}
+  <div className="converted-value">
+    {amount && data?.exchange?.rate
+      ? (amount * data.exchange.rate).toFixed(2)
+      : "Converted Value"}
+  </div>
+
+</div>
 
       {/* ================= CARDS ================= */}
 

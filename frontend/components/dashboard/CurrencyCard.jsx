@@ -4,63 +4,42 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const CurrencyCard = ({ exchange }) => {
-  const router = useRouter();
   const [amount, setAmount] = useState("");
-
   return (
-    <div className="currency-card">
-        <img src="/assets/calculator-bg.png" className="card-bg-img card-bg-1" />
+    <div className="calculator-card card">
 
-      {/* 🔵 Top Button */}
-      <button
-        className="view-all-btn"
-        onClick={() => router.push("/calculators")}
-      >
-        View All
-      </button>
+  <img src="/assets/calculator-bg.png" className="card-bg-img" />
+  <div className="card-overlay"></div>
 
-      {/* Title */}
-      <p className="section-title">Exchange Rates</p>
+  <div className="exchange-rate-display">
+    USD → INR : {exchange?.rate || "93.1258"}
+  </div>
 
-      {/* Rate Box */}
-      <div className="rate-box">
-        1 {exchange?.from} = {exchange?.rate} {exchange?.to}
-      </div>
+  <button className="view-all-btn">View All</button>
 
-      {/* From / To */}
-      <div className="currency-row">
+  <div className="currency-btn from-btn">USD</div>
+  <div className="currency-btn to-btn">INR</div>
 
-        <div className="currency-block">
-          <p>From</p>
-          <div className="currency-tag">{exchange?.from}</div>
-        </div>
+  <img src="/assets/usa.png" className="flag usa-flag" />
+  <img src="/assets/india.png" className="flag india-flag" />
 
-        <div className="currency-block">
-          <p>To</p>
-          <div className="currency-tag">{exchange?.to}</div>
-        </div>
+  <div className="swap-icon">⇄</div>
 
-      </div>
+  <input
+  type="number"
+  className="amount-input"
+  placeholder="Enter amount"
+  value={amount}
+  onChange={(e) => setAmount(e.target.value)}
+/>
 
-      {/* Amount */}
-      <div className="amount-section">
-        <p>Amount</p>
-        <input
-          type="number"
-          placeholder="Enter amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-      </div>
+<div className="converted-value">
+  {amount && exchange?.rate
+    ? (amount * exchange.rate).toFixed(2)
+    : "Converted Value"}
+</div>
 
-      {/* Result */}
-      <div className="result-box">
-        {amount
-          ? `${amount} ${exchange?.from} = ${(amount * exchange?.rate).toFixed(2)} ${exchange?.to}`
-          : "Enter amount to convert"}
-      </div>
-
-    </div>
+</div>
   );
 };
 
