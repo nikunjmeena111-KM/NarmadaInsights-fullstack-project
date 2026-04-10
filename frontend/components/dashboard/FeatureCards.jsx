@@ -23,7 +23,7 @@ const FeatureCards = ({ selectedCountry }) => {
       <div
         className="feature-card"
         onClick={() =>
-          router.push(`/macro?country=${selectedCountry}`)
+          router.push(`/macroData?country=${selectedCountry}`)
         }
       >
         <h3>Macro Data</h3>
@@ -36,7 +36,7 @@ const FeatureCards = ({ selectedCountry }) => {
       <div
         className="feature-card"
         onClick={() =>
-          router.push(`/country?code=${selectedCountry}`)
+          router.push(`/countryDashboard?country=${selectedCountry}`)
         }
       >
         <h3>Country Dashboard</h3>

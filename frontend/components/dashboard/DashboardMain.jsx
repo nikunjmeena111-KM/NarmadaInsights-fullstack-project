@@ -123,7 +123,7 @@ const DashboardMain = () => {
       <div
         className="card country-card"
         onClick={() =>
-          router.push(`/country?code=${selectedCountry}`)
+          router.push(`/countryDashboard?country=${selectedCountry}`)
         }
       >
         <img src="/assets/country-bg.png" className="card-bg-img country-bg" />
