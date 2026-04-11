@@ -1,167 +1,263 @@
 "use client";
 
 import useDashboard from "../../hooks/useDashboard";
-import DashboardNavbar from "../layout/DashboardNavbar";
-import Footer from "../layout/Footer";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import NavbarNew from "./NavbarNew";
+import FooterNew from "./FooterNew";
+
+const CURRENCIES = {
+  USD: {
+    code: "USD",
+    name: "US Dollar",
+    flag: "/assets/usa.png",
+  },
+  INR: {
+    code: "INR",
+    name: "Indian Rupee",
+    flag: "/assets/india.png",
+  },
+};
+
 const DashboardMain = () => {
-  const { data, loading, error, selectedCountry,setSelectedCountry } = useDashboard();
-  const [amount, setAmount] = useState("");
+  const { data, loading, error, selectedCountry, setSelectedCountry } =
+    useDashboard();
+
+  const [amount, setAmount] = useState(1);
+  const [from, setFrom] = useState(CURRENCIES.USD);
+  const [to, setTo] = useState(CURRENCIES.INR);
+
+  // 🔥 DROPDOWN STATE
+  const [open, setOpen] = useState(false);
+
   const router = useRouter();
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div>Error</div>;
+
+  const baseRate = data?.exchange?.rate || 93.3;
+
+  const getRate = () => {
+    if (from.code === "USD" && to.code === "INR") return baseRate;
+    if (from.code === "INR" && to.code === "USD") return 1 / baseRate;
+    return 1;
+  };
+
+  const swap = () => {
+    setFrom(to);
+    setTo(from);
+  };
+
+  const selectedCountryData = data?.countries?.find(
+    (c) => c.code === selectedCountry
+  );
 
   return (
-    <div className="dashboard-container">
+    <>
+      <NavbarNew />
 
-      {/* Navbar */}
-      <DashboardNavbar />
+      {/* 🔥 CLICK OUTSIDE HANDLER (NO useEffect) */}
+      <div onClick={() => setOpen(false)}>
 
-<div className="country-selector">
+        <div className="page">
 
-    <select
-       className="country-dropdown"
-       value={selectedCountry}
-       onChange={(e) => setSelectedCountry(e.target.value)}
-    >
-         {data?.countries?.map((country) => (
-      <option key={country.code} value={country.code}>
-          {country.name}
-      </option>
-          ))}
-    </select>
+          {/* HERO */}
+          <div className="hero-row">
+            <div>
+              <h1 className="hero-title">NarmadaInsights</h1>
+              <p className="hero-sub">
+                Turning complex economic data into clear, actionable insights. Explore global economies through real-time macro indicators, trends, and analytics. Designed to help you understand markets with clarity and confidence.
+              </p>
+            </div>
 
-      {/* Custom arrow */}
-    <div className="dropdown-arrow">▼</div>
+            {/* 🔥 CUSTOM DROPDOWN */}
+            <div
+              className="country-dropdown-wrapper"
+              onClick={(e) => e.stopPropagation()}
+            >
 
-</div>
+              {/* BUTTON */}
+              <div
+                className="country-badge"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpen(!open);
+                }}
+              >
+                <img
+                  src={`https://flagcdn.com/w40/${selectedCountry.toLowerCase()}.png`}
+                  alt={selectedCountryData?.name}
+                />
+                {selectedCountryData?.name} 
+              </div>
 
-      {/* ================= CALCULATOR ================= */}
-    <div className="calculator-card card">
+              {/* LIST */}
+              {open && (
+                <div className="country-dropdown">
+                  {data?.countries?.map((c) => (
+                    <div
+                      key={c.code}
+                      className="country-option"
+                      onClick={() => {
+                        setSelectedCountry(c.code);
+                        setOpen(false);
+                      }}
+                    >
+                      <img
+                        src={`https://flagcdn.com/w40/${c.code.toLowerCase()}.png`}
+                        alt={c.name}
+                      />
+                      {c.name}
+                    </div>
+                  ))}
+                </div>
+              )}
 
-  <img src="/assets/calculator-bg.png" className="card-bg-img" />
-  <div className="card-overlay"></div>
-
-  {/* 🔥 TITLE */}
-  <div className="calculator-title">
-    Exchange Rate Calculator
-  </div>
-
-  {/* 🔥 EXCHANGE RATE (MOVED ABOVE INPUT) */}
-  <div className="exchange-rate-display">
-    USD → INR : {data?.exchange?.rate || "93.1258"}
-  </div>
-
-  {/* BUTTON */}
-  <button className="view-all-btn">View All</button>
-
-  {/* FROM / TO */}
-  <div className="currency-btn from-btn">USD</div>
-  <div className="currency-btn to-btn">INR</div>
-
-  {/* FLAGS */}
-  <img src="/assets/usa.png" className="flag usa-flag" />
-  <img src="/assets/india.png" className="flag india-flag" />
-
-  {/* SWAP */}
-  <div className="swap-icon">⇄</div>
-
-  {/* INPUT */}
-  <input
-    type="number"
-    className="amount-input"
-    placeholder="Enter amount"
-    value={amount}
-    onChange={(e) => setAmount(e.target.value)}
-  />
-
-  {/* OUTPUT */}
-  <div className="converted-value">
-    {amount && data?.exchange?.rate
-      ? (amount * data.exchange.rate).toFixed(2)
-      : "Converted Value"}
-  </div>
-
-</div>
-
-      {/* ================= CARDS ================= */}
-
-      {/* Stock */}
-      <div
-        className="card stock-card"
-        onClick={() => router.push("/stocks")}
-      >
-        <img src="/assets/stock-bg.png" className="card-bg-img stock-bg" />
-        <div className="card-overlay card-overlay-2"></div>
-
-        <h3 className="card-title stock-title">Stock Data</h3>
-        <p className="card-description stock-desc">
-          Check key stock indices, exchange rates, and market trends.
-        </p>
-      </div>
-
-      {/* Macro */}
-      <div
-        className="card macro-card"
-        onClick={() =>
-          router.push(`/macro?country=${selectedCountry}`)
-        }
-      >
-        <img src="/assets/macro-bg.png" className="card-bg-img macro-bg" />
-        <div className="card-overlay card-overlay-3"></div>
-
-        <h3 className="card-title macro-title">Macro Data</h3>
-        <p className="card-description macro-desc">
-          Explore key economic data and trends.
-        </p>
-      </div>
-
-      {/* Country */}
-      <div
-        className="card country-card"
-        onClick={() =>
-          router.push(`/countryDashboard?country=${selectedCountry}`)
-        }
-      >
-        <img src="/assets/country-bg.png" className="card-bg-img country-bg" />
-        <div className="card-overlay card-overlay-4"></div>
-
-        <h3 className="card-title country-title">Country Dashboard</h3>
-        <p className="card-description country-desc">
-          View detailed data for selected country
-        </p>
-      </div>
-
-      {/* ================= NEWS ================= */}
-
-      <h2 className="news-title">News</h2>
-      <div className="news-divider"></div>
-
-      <div className="news-section">
-             {data?.news?.news?.slice(0, 4).map((item, index) => (
-      <div
-            key={index}
-            className={`news-card news-card-${index + 1}`}
-            onClick={() => window.open(item.url)}
-          >
-            <img src={item.imageUrl} className="news-img" />
-
-            {/* 🔥 TEXT INSIDE IMAGE */}
-          <div className="news-overlay">
-          <p className="news-text">{item.title}</p>
+            </div>
           </div>
-    </div>
-  ))}
-</div>
-      
 
-      {/* Footer */}
-      <Footer />
+          {/* MAIN GRID */}
+          <div className="main-grid">
 
-    </div>
+            {/* EXCHANGE */}
+            <div className="exchange-card">
+
+              <div className="exchange-card-header">
+                Exchange Rates
+              </div>
+
+              <button className="view-all-btn">View All</button>
+
+              <div className="currency-row">
+
+                <div className="currency-select-wrap">
+                  <label>From</label>
+                  <div className="currency-trigger">
+                    <img src={from.flag} className="flag-img" />
+                    <div>
+                      <div className="cur-code">{from.code}</div>
+                      <div className="cur-name">{from.name}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="swap-btn" onClick={swap}>⇄</div>
+
+                <div className="currency-select-wrap">
+                  <label>To</label>
+                  <div className="currency-trigger">
+                    <img src={to.flag} className="flag-img" />
+                    <div>
+                      <div className="cur-code">{to.code}</div>
+                      <div className="cur-name">{to.name}</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="amount-wrap">
+                <label>Amount</label>
+                <input
+                  type="number"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
+              </div>
+
+              <div className="fx-result">
+                <span>{amount} {from.code} =</span>
+                <span>{(amount * getRate()).toFixed(2)} {to.code}</span>
+              </div>
+
+            </div>
+
+            {/* FEATURE CARDS */}
+            <div className="feature-cards">
+
+              <div
+                className="feature-card"
+                onClick={() => router.push("/stocks")}
+              >
+                <div className="feature-card-icon">📈</div>
+
+                <div className="feature-card-body">
+                  <div className="feature-card-title">Stock Data</div>
+                  <div className="feature-card-desc">
+                    Check key stock indices, exchange rates, and market trends.
+                  </div>
+                </div>
+
+                <div className="feature-card-arrow">›</div>
+              </div>
+
+              <div
+                className="feature-card"
+                onClick={() =>
+                  router.push(`/countryDashboard?country=${selectedCountry}`)
+                }
+              >
+                <div className="feature-card-icon">🌍</div>
+
+                <div className="feature-card-body">
+                  <div className="feature-card-title">Country Dashboard</div>
+                  <div className="feature-card-desc">
+                    View detailed data for selected country,including monetory indicators,stock insights and more.
+                  </div>
+                </div>
+
+                <div className="feature-card-arrow">›</div>
+              </div>
+
+              <div
+                className="feature-card"
+                onClick={() =>
+                  router.push(`/macro?country=${selectedCountry}`)
+                }
+              >
+                <div className="feature-card-icon">📊</div>
+
+                <div className="feature-card-body">
+                  <div className="feature-card-title">Macro Data</div>
+                  <div className="feature-card-desc">
+                    Explore key economic data and trends,including GDP,inflation and more.
+                  </div>
+                </div>
+
+                <div className="feature-card-arrow">›</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* NEWS */}
+          <div className="section">
+            <div className="section-header">News</div>
+
+            <div className="news-grid">
+              {data?.news?.news?.slice(0, 4).map((item, i) => (
+                <div
+                  key={i}
+                  className="news-card"
+                  onClick={() => window.open(item.url, "_blank")}
+                >
+                  <img src={item.imageUrl} />
+
+                  <div className="news-card-overlay">
+                    <span className="news-title">{item.title}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <FooterNew />
+    </>
   );
 };
 
