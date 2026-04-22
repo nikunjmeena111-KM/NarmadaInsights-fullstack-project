@@ -200,12 +200,12 @@ const investmentFeeCalculatorService = (data) => {
     }
 
     if (investmentType === "fno") {
-      if (!instrumentType) {
-        logger.error({ layer: "service", service: "investmentCalculator", message: "Instrument type missing" });
-        throw new ApiError(400, "Instrument type required");
+      if (!investmentType) {
+        logger.error({ layer: "service", service: "investmentCalculator", message: "Investment type missing" });
+        throw new ApiError(400, "Investment type required");
       }
 
-      stt = rules.stt[instrumentType][transactionType];
+      stt = rules.stt[investmentType][transactionType];
       stampDuty = rules.stampDuty[transactionType];
       brokerage = rules.brokeragePerOrder;
     }

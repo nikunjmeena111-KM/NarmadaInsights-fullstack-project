@@ -1,0 +1,266 @@
+/* ── DESIGN DNA ── */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:root {
+  --bg: #f7f7f5;
+  --white: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+  --border: #e2e2e0;
+  --green: #2e7d32;
+  --nav-height: 60px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: var(--nav-height);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo { 
+  display: flex; 
+  align-items: center; 
+  text-decoration: none; 
+}
+
+.nav-links { 
+  display: flex; 
+  gap: 32px; 
+  list-style: none; 
+}
+
+.nav-links a { 
+  text-decoration: none; 
+  color: var(--text); 
+  font-size: 14px; 
+  transition: color 0.2s; 
+}
+
+.nav-links a:hover { 
+  color: var(--green); 
+}
+
+.nav-links a.active { 
+  font-weight: 600; 
+  color: var(--green); 
+}
+
+.nav-avatar { 
+  width: 32px; 
+  height: 32px; 
+  border-radius: 50%; 
+  background: #ddd; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.nav-avatar svg { 
+  width: 18px; 
+  height: 18px; 
+  fill: #999; 
+}
+
+/* ── HEADER ── */
+.page { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 48px 40px 64px; 
+}
+
+.page-header { 
+  margin-bottom: 48px; 
+}
+
+.page-header h1 { 
+  font-family: 'DM Serif Display', serif; 
+  font-size: 48px; 
+  letter-spacing: -1.5px; 
+  margin-bottom: 16px; 
+}
+
+.page-header p { 
+  font-size: 14px; 
+  color: #444; 
+  max-width: 750px; 
+  line-height: 1.8; 
+  white-space: pre-line; 
+}
+
+/* ── TWO-COLUMN GRID ── */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.calc-card { 
+  background: var(--white); 
+  border: 1px solid var(--border); 
+  border-radius: 14px; 
+  padding: 32px; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.calc-card h2 { 
+  font-family: 'DM Serif Display', serif; 
+  font-size: 24px; 
+  margin-bottom: 24px; 
+  border-bottom: 1px solid var(--border); 
+  padding-bottom: 12px; 
+}
+
+/* ── FORM ELEMENTS ── */
+.form-group { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  margin-bottom: 18px; 
+}
+
+.form-row { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
+}
+
+label { 
+  font-size: 11px; 
+  font-weight: 600; 
+  text-transform: uppercase; 
+  letter-spacing: 0.6px; 
+  color: var(--muted); 
+}
+
+input, select { 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  padding: 10px 14px; 
+  font-family: 'DM Sans', sans-serif; 
+  font-size: 13.5px; 
+  background: var(--bg); 
+  outline: none; 
+}
+
+input:focus { 
+  border-color: var(--green); 
+  background: var(--white); 
+}
+
+.btn-calc { 
+  width: 100%; 
+  padding: 12px; 
+  background: var(--green); 
+  color: #fff; 
+  font-weight: 600; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  margin-top: auto; 
+}
+
+/* ── RESULTS ── */
+.result-display { 
+  margin-top: 24px; 
+  padding: 20px; 
+  background: var(--bg); 
+  border-radius: 10px; 
+  border-left: 4px solid var(--green); 
+}
+
+.result-val { 
+  font-family: 'DM Serif Display', serif; 
+  font-size: 26px; 
+}
+
+/* ── FOOTER ── */
+footer { 
+  border-top: 1px solid var(--border); 
+  background: var(--white); 
+  padding: 32px 40px 24px; 
+  margin-top: 60px; 
+}
+
+.footer-inner { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+}
+
+.footer-top { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  margin-bottom: 20px; 
+}
+
+.footer-logo { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  margin-bottom: 12px; 
+}
+
+.footer-copyright { 
+  font-size: 12px; 
+  color: var(--muted); 
+}
+
+.footer-links { 
+  display: flex; 
+  gap: 28px; 
+  list-style: none; 
+}
+
+.footer-links a { 
+  text-decoration: none; 
+  font-size: 13px; 
+  color: var(--text); 
+}
+
+.footer-bottom { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  border-top: 1px solid var(--border); 
+  padding-top: 16px; 
+}
+
+.social-links { 
+  display: flex; 
+  gap: 14px; 
+}
+
+.footer-legal { 
+  font-size: 11px; 
+  color: var(--muted); 
+  text-align: right; 
+  line-height: 1.6; 
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) { 
+  .calc-grid { 
+    grid-template-columns: 1fr; 
+  } 
+}
