@@ -11,10 +11,10 @@ export default function NavbarMacro() {
 
       <ul className="nav-links">
         <li><a href="/dashboard">Home</a></li>
-        <li><a href="#">Calculators</a></li>
+        <li><a href="/calculators">Calculators</a></li>
         <li><a href="#">Macro</a></li>
-        <li><a href="#">Stocks</a></li>
-        <li><a href="#">Support</a></li>
+        <li><a href="/stocks">Stocks</a></li>
+        <li><a href="/support">Support</a></li>
       </ul>
 
       <div className="nav-avatar">

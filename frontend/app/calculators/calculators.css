@@ -112,6 +112,7 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  align-items: start; 
 }
 
 .calc-card { 
@@ -177,7 +178,7 @@ input:focus {
   border: none; 
   border-radius: 8px; 
   cursor: pointer; 
-  margin-top: auto; 
+  margin-top: 16px; 
 }
 
 /* ── RESULTS ── */
@@ -263,4 +264,82 @@ footer {
   .calc-grid { 
     grid-template-columns: 1fr; 
   } 
+}
+
+.country-dropdown {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+/* BUTTON */
+.country-select-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 44px;
+  padding: 0 14px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+
+  cursor: pointer;
+}
+
+.country-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.country-left img {
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.dropdown-arrow {
+  font-size: 12px;
+  color: #666;
+}
+
+/* DROPDOWN PANEL */
+.country-dropdown-panel {
+  position: absolute;
+  top: 50px;
+  left: 0;
+
+  width: 100%;
+  max-height: 260px;
+
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  overflow-y: auto;
+  z-index: 100;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* ITEMS */
+.country-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.country-item img {
+  width: 18px;
+  height: 12px;
+}
+
+.country-item:hover {
+  background: #f5f5f5;
 }

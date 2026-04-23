@@ -37,7 +37,7 @@ export default function FooterMacro() {
           </div>
 
           <div className="footer-legal">
-            <div>© Narmada Insights</div>
+            <div><p style={{textAlign:"right"}}>© Narmada Insights</p></div>
             <div>
               Data is for informational purposes only and may not be fully accurate.
             </div>

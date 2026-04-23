@@ -6,11 +6,11 @@ export default function NavbarNew() {
       </a>
 
       <ul className="nav-links">
-        <li><a className="active">Dashboard</a></li>
-        <li><a>Calculators</a></li>
-        <li><a>Macro</a></li>
-        <li><a>Stocks</a></li>
-        <li><a>Support</a></li>
+        <li><a className="active" href="/dashboard">Dashboard</a></li>
+        <li><a href="/calculators">Calculators</a></li>
+        <li><a href="/macro">Macro</a></li>
+        <li><a href="/stocks">Stocks</a></li>
+        <li><a href="/support">Support</a></li>
       </ul>
 
       <div className="nav-avatar">👤</div>

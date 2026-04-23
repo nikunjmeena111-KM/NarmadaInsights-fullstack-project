@@ -8,11 +8,11 @@ export default function NavbarCalculators() {
       </a>
 
       <ul className="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="/dashboard">Home</a></li>
         <li><a href="#" className="active">Calculators</a></li>
-        <li><a href="#">Macro</a></li>
-        <li><a href="#">Stocks</a></li>
-        <li><a href="#">Support</a></li>
+        <li><a href="/macro">Macro</a></li>
+        <li><a href="/stocks">Stocks</a></li>
+        <li><a href="/support">Support</a></li>
       </ul>
 
       <div className="nav-avatar">
