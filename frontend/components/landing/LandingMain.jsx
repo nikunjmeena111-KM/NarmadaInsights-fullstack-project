@@ -32,7 +32,7 @@ export default function LandingMain() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-content">
-          <h1>Simple Financial Insights, All in One Place</h1>
+          <h1>Simple Financial Insights, All at One Place</h1>
           <p>
             Access macro data, market trends, and powerful calculators — all in one place to simplify complex financial concepts and support smarter decision-making.
           </p>

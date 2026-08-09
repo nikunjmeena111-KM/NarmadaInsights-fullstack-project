@@ -44,9 +44,7 @@ app.use("/api/v1/calculators", calculatorRoutes);
 
 app.use("/api/v1/users", userRoutes);
 
-app.get("/test-route", (req, res) => {
-  res.send("TEST WORKING");
-});
+
 
 app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).json({
